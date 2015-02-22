@@ -1,6 +1,6 @@
 {
   "name": "salario-liquido",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "bin": {
     "salario-liquido": "./bin/calculator.js"
