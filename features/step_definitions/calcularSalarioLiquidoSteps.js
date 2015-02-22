@@ -1,19 +1,23 @@
 var netSalarySteps = function() {
-  var grossSalary, result;
+  var grossSalary, result, dependents;
 
   this.Given(/^que eu recebo um salário bruto de (.*)$/, function (_grossSalary_, callback) {
     grossSalary = _grossSalary_;
     callback();
   });
 
+  this.Given(/^que eu tenho (.*) dependentes$/, function (_dependents_, callback) {
+    dependents = _dependents_;
+    callback();
+  });
+
   this.Given(/^eu calcular o meu salário líquido$/, function (callback) {
-    result = this.netSalaryCalculator.netSalaryFor(grossSalary);
+    result = this.netSalaryCalculator.netSalaryFor(grossSalary, dependents);
     callback();
   });
 
   this.Given(/^a minha contribuição para o INSS é de (.*)$/, function (expectedINSS, callback) {
     expect(result.INSS).to.equal(expectedINSS);
-
     callback();
   });
 
@@ -28,8 +32,7 @@ var netSalarySteps = function() {
   });
 
   this.Given(/^a base de cálculo para o meu IRRF é de (.*)$/, function (expectedCalcBasis, callback) {
-    var actualCalcBasis = (grossSalary - result.INSS).toFixed(2);
-    expect(actualCalcBasis).to.equal(expectedCalcBasis);
+    expect(result.baseAmount).to.equal(expectedCalcBasis);
 
     callback();
   });

@@ -6,8 +6,15 @@ var usageFile = require('fs').readFileSync(path.resolve(__dirname, 'usage.txt'),
 var options = require('docopt').docopt(usageFile, { version: require('../package').version });
 
 var grossSalary = options['<salario_bruto>'];
+var dependents = options['<dependentes>'] || 0;
 
-var result = require('../lib/netSalaryCalculator').netSalaryFor(grossSalary);
+var result = require('../lib/netSalaryCalculator').netSalaryFor(grossSalary, dependents);
+
+console.log('================');
+console.log('Informações fornecidas:');
+console.log('================');
+console.log('Salário bruto: R$', grossSalary);
+console.log('Dependentes:', dependents);
 
 console.log('================');
 console.log('Descontos:');

@@ -1,5 +1,5 @@
 Calculadora de salário líquido.
 
 usage:
-  salario-liquido <salario_bruto>
+  salario-liquido <salario_bruto> [<dependentes>]
   salario-liquido -h | --help | --version
