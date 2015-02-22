@@ -2,28 +2,70 @@
 
 Funcionalidade: funcionário calcula seu salário líquido
 
-Como um funcionário
-Eu quero calcular meu salário líquido
-Para descobrir qual o valor que deve entrar na minha conta corrente
+  No papel de um funcionário
+  Eu quero calcular meu salário líquido
+  Para descobrir qual o valor que deve entrar na minha conta corrente
 
-  Contexto:
-    Dado que o desconto do INSS é feito da seguinte forma:
-      | Salário até | Desconto    |
-      |   1399.12   |  8%         |
-      |   2331.88   |  9%         |
-      |   4159.00   |  11%        |
-      |   4663.75   |  R$ 513.01  |
-    E que a alíquota do imposto de renda segue os valores:
-      | Renda partindo de | Renda até | Alíquota |
-      |        -          |  1787.77  |    -     |
-      |     1787.78       |  2679.29  |   7.5    |
-      |     2679.30       |  3572.43  |   15     |
-      |     3572.44       |  4463.81  |   22.5   |
-      |     4463.81       |     -     |   27.5   |
+  Informações relevantes:
 
-  Cenário: Salário isento de imposto de renda
-    Dado que eu recebo um salário bruto de 1900.00
+  Levar em conta que cada dependente legal representa R$ 179,71
+
+  Tabela do INSS:
+  | Salário até (R$) | Desconto    |
+  |   1399.12        |  8%         |
+  |   2331.88        |  9%         |
+  |   4159.00        |  11%        |
+  |   4663.75        |  R$ 513.01  |
+
+  Tabela do IRRF (2015):
+  | Renda partindo de (R$) | Renda até (R$) | Alíquota (%) | Parcela a deduzir do imposto (R$) |
+  |        -               |  1787.77       |    -         |             -                     |
+  |     1787.78            |  2679.29       |   7.5        |           134.08                  |
+  |     2679.30            |  3572.43       |   15         |           335.03                  |
+  |     3572.44            |  4463.81       |   22.5       |           602.96                  |
+  |     4463.81            |     -          |   27.5       |           826.15                  |
+
+  Esquema do Cenário: Cálculo do INSS
+    Dado que eu recebo um salário bruto de <salário bruto>
     Quando eu calcular o meu salário líquido
-    Então eu devo ver os valores distribuídos da seguinte forma:
-    | INSS   |   IR   |  Salário líquido |
-    | 171.00 |  0.00  |     1729.00      |
+    Então a minha contribuição para o INSS é de <INSS>
+    E esse valor representa <percentual> de desconto
+
+  Exemplos:
+    |  salário bruto  |   INSS      |  percentual |
+    |     1200.00     |   96.00     |      8%     |
+    |     1600.00     |   144.00    |      9%     |
+    |     4050.00     |   445.50    |     11%     |
+    |     5960.00     |   513.01    |     TETO    |
+
+  Esquema do Cenário: Cálculo do IRRF
+    Dado que eu recebo um salário bruto de <salário bruto>
+    Quando eu calcular o meu salário líquido
+    Então a minha contribuição para o INSS é de <INSS>
+    E a base de cálculo para o meu IRRF é de <base de cálculo>
+    E isso significa que meu IRRF é de <IRRF>
+
+  Exemplos:
+    |  salário bruto  |   INSS      |  base de cálculo |   IRRF    |
+    |     1200.00     |   96.00     |     1104.00      |   0.00    |
+    |     1600.00     |   144.00    |     1456.00      |   0.00    |
+    |     2670.50     |   293.75    |     2376.75      |   44.18   |
+    |     3400.00     |   374.00    |     3026.00      |   118.87  |
+    |     4050.00     |   445.50    |     3604.50      |   208.05  |
+    |     5960.00     |   513.01    |     5446.99      |   671.77  |
+
+  Esquema do Cenário: Cálculo do salário líquido
+    Dado que eu recebo um salário bruto de <salário bruto>
+    Quando eu calcular o meu salário líquido
+    Então a minha contribuição para o INSS é de <INSS>
+    E o meu IRRF é de <IRRF>
+    E isso significa que meu salário líquido é de <salário líquido>
+
+  Exemplos:
+    |  salário bruto  |   INSS      |  IRRF    |  salário líquido |
+    |     1200.00     |   96.00     |  0.00    |     1104.00      |
+    |     1600.00     |   144.00    |  0.00    |     1456.00      |
+    |     2670.50     |   293.75    |  44.18   |     2332.57      |
+    |     3400.00     |   374.00    |  118.87  |     2907.13      |
+    |     4050.00     |   445.50    |  208.05  |     3396.45      |
+    |     5960.00     |   513.01    |  671.77  |     4775.22      |
