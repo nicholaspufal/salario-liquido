@@ -10,14 +10,14 @@ Funcionalidade: funcionário calcula seu salário líquido
 
   Levar em conta que cada dependente legal representa R$ 179,71
 
-  Tabela do INSS:
+  Tabela do INSS (a partir de 1º Janeiro 2014):
   | Salário até (R$) | Desconto    |
-  |   1399.12        |  8%         |
-  |   2331.88        |  9%         |
-  |   4159.00        |  11%        |
-  |   4663.75        |  R$ 513.01  |
+  |   1317.07        |  8%         |
+  |   2195.12        |  9%         |
+  |   4390.24        |  11%        |
+  Valor máximo do segurado empregado: R$ 513.01 (R$ 4.663,75 * 0.11)
 
-  Tabela do IRRF (2015):
+  Tabela do IRRF (a partir de 1º Janeiro 2014):
   | Renda partindo de (R$) | Renda até (R$) | Alíquota (%) | Parcela a deduzir do imposto (R$) |
   |        -               |  1787.77       |    -         |             -                     |
   |     1787.78            |  2679.29       |   7.5        |           134.08                  |

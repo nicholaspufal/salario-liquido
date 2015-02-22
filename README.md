@@ -15,10 +15,8 @@ salario-liquido -h | --help | --version
 
 ### Example:
 
-```
-salario-liquido 7506.93
+```salario-liquido 7506.93```
 
-```
 Will return:
 ```
 ================
@@ -47,8 +45,7 @@ Seu salário líquido: R$ 5896.74
 ## TODOS
 
 * Add "other costs" support
-* Double check if the values being used for INSS/IRRF/dependents are up-to-date
-* Refactor code - this was mostly a spike, so it's not looking good now
+* Refactor code - this was mostly a spike, so it's not looking that good now
 
 ## License
 This is licensed under the feel-free-to-do-whatever-you-want-to-do license.
