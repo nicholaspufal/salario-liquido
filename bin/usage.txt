@@ -1,0 +1,5 @@
+Calculadora de salário líquido.
+
+usage:
+  salario-liquido <salario_bruto>
+  salario-liquido -h | --help | --version
