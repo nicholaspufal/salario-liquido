@@ -8,22 +8,22 @@ Funcionalidade: funcionário calcula seu salário líquido
 
   Informações relevantes:
 
-  Levar em conta que cada dependente legal representa R$ 179,71
+  Levar em conta que cada dependente legal representa R$ 189,59 (a partir de 04/2015)
 
-  Tabela do INSS (a partir de 1º Janeiro 2014):
+  Tabela do INSS (a partir de 1º Janeiro 2015):
   | Salário até (R$) | Desconto    |
-  |   1317.07        |  8%         |
-  |   2195.12        |  9%         |
-  |   4390.24        |  11%        |
+  |   1399.12        |  8%         |
+  |   2331.88        |  9%         |
+  |   4663.75        |  11%        |
   Valor máximo do segurado empregado: R$ 513.01 (R$ 4.663,75 * 0.11)
 
-  Tabela do IRRF (a partir de 1º Janeiro 2014):
+  Tabela do IRRF (a partir de Abril 2015):
   | Renda partindo de (R$) | Renda até (R$) | Alíquota (%) | Parcela a deduzir do imposto (R$) |
-  |        -               |  1787.77       |    -         |             -                     |
-  |     1787.78            |  2679.29       |   7.5        |           134.08                  |
-  |     2679.30            |  3572.43       |   15         |           335.03                  |
-  |     3572.44            |  4463.81       |   22.5       |           602.96                  |
-  |     4463.81            |     -          |   27.5       |           826.15                  |
+  |        -               |  1903.98       |    -         |             -                     |
+  |     1903.99            |  2826.65       |   7.5        |           142.80                  |
+  |     2826.66            |  3751.05       |   15         |           354.80                  |
+  |     3751.06            |  4664.68       |   22.5       |           636.13                  |
+  |     4664.68            |     -          |   27.5       |           869.36                  |
 
   Esquema do Cenário: Cálculo do INSS
     Dado que eu recebo um salário bruto de <salário bruto>
@@ -49,13 +49,13 @@ Funcionalidade: funcionário calcula seu salário líquido
   Exemplos:
     |  salário bruto  |  numero dependentes  |  INSS      |  base de cálculo |   IRRF    |
     |     1200.00     |         0            |  96.00     |     1104.00      |   0.00    |
-    |     1200.00     |         2            |  96.00     |     744.58       |   0.00    |
+    |     1200.00     |         2            |  96.00     |     724.82       |   0.00    |
     |     1600.00     |         0            |  144.00    |     1456.00      |   0.00    |
-    |     2670.50     |         0            |  293.75    |     2376.75      |   44.18   |
-    |     3400.00     |         0            |  374.00    |     3026.00      |   118.87  |
-    |     4050.00     |         0            |  445.50    |     3604.50      |   208.05  |
-    |     5960.00     |         0            |  513.01    |     5446.99      |   671.77  |
-    |     5960.00     |         2            |  513.01    |     5087.57      |   572.93  |
+    |     2670.50     |         0            |  293.75    |     2376.75      |   35.46   |
+    |     3400.00     |         0            |  374.00    |     3026.00      |   99.10   |
+    |     4050.00     |         0            |  445.50    |     3604.50      |   185.87  |
+    |     5960.00     |         0            |  513.01    |     5446.99      |   628.56  |
+    |     5960.00     |         2            |  513.01    |     5067.81      |   524.29  |
 
   Esquema do Cenário: Cálculo do salário líquido
     Dado que eu recebo um salário bruto de <salário bruto>
@@ -70,9 +70,9 @@ Funcionalidade: funcionário calcula seu salário líquido
     |     1200.00     |          0         |  96.00     |  0.00    |     1104.00      |
     |     1200.00     |          2         |  96.00     |  0.00    |     1104.00      |
     |     1600.00     |          0         |  144.00    |  0.00    |     1456.00      |
-    |     2670.50     |          0         |  293.75    |  44.18   |     2332.57      |
-    |     3400.00     |          0         |  374.00    |  118.87  |     2907.13      |
-    |     4050.00     |          0         |  445.50    |  208.05  |     3396.45      |
-    |     5960.00     |          0         |  513.01    |  671.77  |     4775.22      |
-    |     5960.00     |          2         |  513.01    |  572.93  |     4874.06      |
+    |     2670.50     |          0         |  293.75    |  35.46   |     2341.29      |
+    |     3400.00     |          0         |  374.00    |  99.10   |     2926.90      |
+    |     4050.00     |          0         |  445.50    |  185.87  |     3418.63      |
+    |     5960.00     |          0         |  513.01    |  628.56  |     4818.43      |
+    |     5960.00     |          2         |  513.01    |  524.29  |     4922.70      |
 
