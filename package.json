@@ -5,6 +5,9 @@
   "bin": {
     "salario-liquido": "./bin/calculator.js"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber.js"
+  },
   "main": "./lib/netSalaryCalculator.js",
   "author": "Nicholas Pufal <niko.pufal@gmail.com>",
   "license": "ISC",
